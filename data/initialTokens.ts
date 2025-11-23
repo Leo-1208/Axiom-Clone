@@ -1,0 +1,66 @@
+import type { Token } from '../store/slices/tokenSlice';
+
+// A small set of example tokens used by the mock API. In a real
+// application this data would come from a backend service or third‑party API.
+export const initialTokens: Token[] = [
+  {
+    id: 'btc',
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    category: 'final',
+    price: 34750.12,
+    change24h: 1.2,
+    volume: 20000000000,
+    marketCap: 700000000000,
+  },
+  {
+    id: 'eth',
+    name: 'Ethereum',
+    symbol: 'ETH',
+    category: 'final',
+    price: 1800.34,
+    change24h: -0.3,
+    volume: 12000000000,
+    marketCap: 280000000000,
+  },
+  {
+    id: 'sol',
+    name: 'Solana',
+    symbol: 'SOL',
+    category: 'new',
+    price: 55.78,
+    change24h: 4.8,
+    volume: 2500000000,
+    marketCap: 23000000000,
+  },
+  {
+    id: 'ada',
+    name: 'Cardano',
+    symbol: 'ADA',
+    category: 'new',
+    price: 0.39,
+    change24h: 2.1,
+    volume: 1500000000,
+    marketCap: 14000000000,
+  },
+  {
+    id: 'bch',
+    name: 'Bitcoin Cash',
+    symbol: 'BCH',
+    category: 'migrated',
+    price: 230.45,
+    change24h: -1.5,
+    volume: 800000000,
+    marketCap: 4500000000,
+  },
+  {
+    id: 'ltc',
+    name: 'Litecoin',
+    symbol: 'LTC',
+    category: 'migrated',
+    price: 72.15,
+    change24h: 0.8,
+    volume: 600000000,
+    marketCap: 5000000000,
+  },
+];
