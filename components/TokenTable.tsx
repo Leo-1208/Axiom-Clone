@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import { useTokenData } from '../hooks/useTokenData';
 import SkeletonRow from './SkeletonRow';
 import TokenRow from './TokenRow';
@@ -29,6 +30,14 @@ export default function TokenTable({ category, search = '' }: TokenTableProps) {
   type SortKey = 'price' | 'change24h' | 'volume' | 'marketCap';
   const [sortKey, setSortKey] = useState<SortKey>('price');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
+
+  // State for progressive loading
+  const [visibleCount, setVisibleCount] = useState<number>(20);
+  const loadMore = () => setVisibleCount((prev) => prev + 20);
+  // Reset visible count when category or search changes
+  useEffect(() => {
+    setVisibleCount(20);
+  }, [category, search]);
 
   const onSort = (key: SortKey) => {
     if (sortKey === key) {
@@ -59,9 +68,10 @@ export default function TokenTable({ category, search = '' }: TokenTableProps) {
   }, [data, sortKey, sortDir, search]);
 
   return (
-    <div className="overflow-x-auto border border-gray-200 rounded-lg bg-white shadow-sm">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <TooltipProvider delayDuration={300} skipDelayDuration={0}>
+      <div className="overflow-x-auto border border-gray-200 rounded-lg bg-white shadow-sm">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
           <tr>
             <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
               Name
@@ -105,9 +115,21 @@ export default function TokenTable({ category, search = '' }: TokenTableProps) {
             </tr>
           )}
           {!isLoading && data &&
-            sortedTokens.map((token) => <TokenRow key={token.id} token={token} />)}
+            sortedTokens.slice(0, visibleCount).map((token) => <TokenRow key={token.id} token={token} />)}
         </tbody>
-      </table>
-    </div>
+        </table>
+        {/* Load more button for progressive loading */}
+        {!isLoading && sortedTokens.length > visibleCount && (
+          <div className="text-center p-4">
+            <button
+              onClick={loadMore}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Load more
+            </button>
+          </div>
+        )}
+      </div>
+    </TooltipProvider>
   );
 }
