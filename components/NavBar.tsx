@@ -23,9 +23,11 @@ export default function NavBar() {
   // Control visibility of sign in and sign up dialogs
   const [openSignIn, setOpenSignIn] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
-  // Capture form input values
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // Capture form input values. Prepopulate with demo credentials so
+  // users can quickly sign in without entering anything. In a real
+  // application these would start empty and be validated by an API.
+  const [email, setEmail] = useState('demo@axiom.com');
+  const [password, setPassword] = useState('password');
 
   /**
    * Handle the sign in form submission. Simply marks the user as logged
@@ -60,9 +62,9 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="flex items-center justify-between p-4 border-b border-gray-200 bg-white">
+    <nav className="flex items-center justify-between p-4 border-b border-gray-700 bg-black text-white z-50">
       {/* Logo / Brand */}
-      <Link href="/" className="text-xl font-bold text-gray-900">
+      <Link href="/" className="text-xl font-bold">
         Axiom&nbsp;Pro
       </Link>
       {/* Right side actions */}
@@ -72,13 +74,14 @@ export default function NavBar() {
             {/* Sign in dialog */}
             <Dialog.Root open={openSignIn} onOpenChange={setOpenSignIn}>
               <Dialog.Trigger asChild>
-                <button className="px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <button className="px-4 py-2 text-sm font-medium text-blue-400 border border-blue-400 rounded-md hover:bg-blue-600/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                   Login
                 </button>
               </Dialog.Trigger>
               <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-                <Dialog.Content className="fixed left-1/2 top-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-6 shadow-lg focus:outline-none">
+                {/* Use very high z-index values for the overlay and content so that dialogs always appear on top of the page content. */}
+                <Dialog.Overlay className="fixed inset-0 bg-black/70 z-[2000]" />
+                <Dialog.Content className="fixed left-1/2 top-1/2 z-[2001] w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-gray-900 p-6 text-white shadow-lg focus:outline-none">
                   <Dialog.Title className="text-lg font-semibold mb-4">Sign In</Dialog.Title>
                   <form onSubmit={handleSignIn} className="space-y-4">
                     <input
@@ -86,7 +89,7 @@ export default function NavBar() {
                       placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full border border-gray-300 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full border border-gray-500 bg-gray-800 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                       required
                     />
                     <input
@@ -94,7 +97,7 @@ export default function NavBar() {
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full border border-gray-300 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full border border-gray-500 bg-gray-800 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                       required
                     />
                     <button
@@ -115,8 +118,9 @@ export default function NavBar() {
                 </button>
               </Dialog.Trigger>
               <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-                <Dialog.Content className="fixed left-1/2 top-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-6 shadow-lg focus:outline-none">
+                {/* Use very high z-index values for the overlay and content so that dialogs always appear on top of the page content. */}
+                <Dialog.Overlay className="fixed inset-0 bg-black/70 z-[2000]" />
+                <Dialog.Content className="fixed left-1/2 top-1/2 z-[2001] w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg bg-gray-900 p-6 text-white shadow-lg focus:outline-none">
                   <Dialog.Title className="text-lg font-semibold mb-4">Create Account</Dialog.Title>
                   <form onSubmit={handleSignUp} className="space-y-4">
                     <input
@@ -124,7 +128,7 @@ export default function NavBar() {
                       placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full border border-gray-300 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full border border-gray-500 bg-gray-800 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                       required
                     />
                     <input
@@ -132,7 +136,7 @@ export default function NavBar() {
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full border border-gray-300 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full border border-gray-500 bg-gray-800 rounded p-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                       required
                     />
                     <button
