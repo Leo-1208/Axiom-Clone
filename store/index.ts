@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import tokenReducer from './slices/tokenSlice';
+import authReducer from './slices/authSlice';
 
 /**
  * The global Redux store for this application. Additional slices can be added
@@ -8,6 +9,11 @@ import tokenReducer from './slices/tokenSlice';
 export const store = configureStore({
   reducer: {
     tokens: tokenReducer,
+    /**
+     * Authentication slice controls whether the user is logged in. See
+     * `store/slices/authSlice.ts` for reducer details.
+     */
+    auth: authReducer,
   },
 });
 
