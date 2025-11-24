@@ -50,7 +50,7 @@ export default function DiscoveryPage() {
           placeholder="Search tokens..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full max-w-md rounded-md border border-gray-600 bg-gray-800 text-white p-2 text-sm placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+          className="w-full max-w-md rounded-md border border-gray-600 bg-gray-300 text-black p-2 text-sm placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
         />
       </div>
       <div role="tablist" aria-label="Token categories" className="mb-4 flex flex-wrap gap-2">
