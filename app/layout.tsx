@@ -1,6 +1,7 @@
 import './globals.css';
 import React from 'react';
 import { Providers } from './providers';
+import NavBar from '../components/NavBar';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -20,7 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* Global navigation bar appears on all pages */}
+          <NavBar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
