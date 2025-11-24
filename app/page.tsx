@@ -172,7 +172,7 @@ export default function Home() {
         </div>
       </section>
       {/* FAQ Section */}
-      <section className="py-16 px-4 mb-30">
+      <section className="py-16 px-4 mb-40">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10">FAQ</h2>
         <div className="max-w-3xl mx-auto">
           {faqs.map((faq, idx) => (
