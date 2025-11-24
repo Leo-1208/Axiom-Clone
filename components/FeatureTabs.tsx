@@ -18,6 +18,11 @@ export interface FeatureItem {
   description: string;
   /** Optional image source to illustrate the feature */
   image?: string;
+  /** Optional video source to illustrate the feature. If provided this
+   *  takes precedence over the image when rendering the panel. Use
+   *  a relative path pointing into the public directory (e.g.
+   *  "/automatic-placement.mp4"). */
+  video?: string;
 }
 
 interface FeatureTabsProps {
@@ -69,8 +74,20 @@ export default function FeatureTabs({ features }: FeatureTabsProps) {
           <p className="text-blue-300 mb-4">{activeFeature.subtitle}</p>
           <p className="text-gray-400 leading-relaxed">{activeFeature.description}</p>
         </div>
-        {/* Illustration if provided */}
-        {activeFeature.image && (
+        {/* Illustration if provided. Prefer video over image when both are supplied */}
+        {activeFeature.video ? (
+          <div className="flex-1 flex justify-center items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <video
+              src={activeFeature.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="rounded-lg shadow-lg max-h-72 w-full"
+            />
+          </div>
+        ) : activeFeature.image ? (
           <div className="flex-1 flex justify-center items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -79,7 +96,7 @@ export default function FeatureTabs({ features }: FeatureTabsProps) {
               className="rounded-lg shadow-lg max-h-72 object-contain"
             />
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
