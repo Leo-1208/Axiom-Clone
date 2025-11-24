@@ -2,6 +2,7 @@ import './globals.css';
 import React from 'react';
 import { Providers } from './providers';
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -25,6 +26,8 @@ export default function RootLayout({
           {/* Global navigation bar appears on all pages */}
           <NavBar />
           {children}
+          {/* Global footer displayed at the bottom of every page */}
+          <Footer />
         </Providers>
       </body>
     </html>
