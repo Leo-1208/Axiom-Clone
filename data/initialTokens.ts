@@ -1,8 +1,7 @@
 import type { Token } from '../store/slices/tokenSlice';
 
-// A small set of example tokens used by the mock API. In a real
-// application this data would come from a backend service or third‑party API.
 export const initialTokens: Token[] = [
+  // ---- FINAL ----
   {
     id: 'btc',
     name: 'Bitcoin',
@@ -24,6 +23,28 @@ export const initialTokens: Token[] = [
     marketCap: 280000000000,
   },
   {
+    id: 'bnb',
+    name: 'BNB',
+    symbol: 'BNB',
+    category: 'final',
+    price: 238.44,
+    change24h: 0.9,
+    volume: 2100000000,
+    marketCap: 36000000000,
+  },
+  {
+    id: 'xrp',
+    name: 'XRP',
+    symbol: 'XRP',
+    category: 'final',
+    price: 0.62,
+    change24h: -1.1,
+    volume: 900000000,
+    marketCap: 33000000000,
+  },
+
+  // ---- NEW ----
+  {
     id: 'sol',
     name: 'Solana',
     symbol: 'SOL',
@@ -44,6 +65,28 @@ export const initialTokens: Token[] = [
     marketCap: 14000000000,
   },
   {
+    id: 'dot',
+    name: 'Polkadot',
+    symbol: 'DOT',
+    category: 'new',
+    price: 4.91,
+    change24h: 3.4,
+    volume: 650000000,
+    marketCap: 6100000000,
+  },
+  {
+    id: 'avax',
+    name: 'Avalanche',
+    symbol: 'AVAX',
+    category: 'new',
+    price: 12.55,
+    change24h: -0.8,
+    volume: 480000000,
+    marketCap: 4400000000,
+  },
+
+  // ---- MIGRATED ----
+  {
     id: 'bch',
     name: 'Bitcoin Cash',
     symbol: 'BCH',
@@ -62,5 +105,77 @@ export const initialTokens: Token[] = [
     change24h: 0.8,
     volume: 600000000,
     marketCap: 5000000000,
+  },
+  {
+    id: 'xtz',
+    name: 'Tezos',
+    symbol: 'XTZ',
+    category: 'migrated',
+    price: 0.83,
+    change24h: -0.6,
+    volume: 110000000,
+    marketCap: 780000000,
+  },
+  {
+    id: 'neo',
+    name: 'NEO',
+    symbol: 'NEO',
+    category: 'migrated',
+    price: 11.32,
+    change24h: 1.4,
+    volume: 190000000,
+    marketCap: 800000000,
+  },
+
+  // ---- EXTRA TOKENS: MIXED ----
+  {
+    id: 'arb',
+    name: 'Arbitrum',
+    symbol: 'ARB',
+    category: 'new',
+    price: 1.12,
+    change24h: 6.4,
+    volume: 950000000,
+    marketCap: 1430000000,
+  },
+  {
+    id: 'op',
+    name: 'Optimism',
+    symbol: 'OP',
+    category: 'new',
+    price: 1.98,
+    change24h: 3.1,
+    volume: 580000000,
+    marketCap: 780000000,
+  },
+  {
+    id: 'doge',
+    name: 'Dogecoin',
+    symbol: 'DOGE',
+    category: 'final',
+    price: 0.085,
+    change24h: -2.2,
+    volume: 2200000000,
+    marketCap: 12000000000,
+  },
+  {
+    id: 'matic',
+    name: 'Polygon',
+    symbol: 'MATIC',
+    category: 'migrated',
+    price: 0.73,
+    change24h: 5.5,
+    volume: 750000000,
+    marketCap: 6800000000,
+  },
+  {
+    id: 'inj',
+    name: 'Injective',
+    symbol: 'INJ',
+    category: 'new',
+    price: 9.12,
+    change24h: 7.1,
+    volume: 420000000,
+    marketCap: 780000000,
   },
 ];
