@@ -1,18 +1,13 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
-/**
- * Global site footer. Displays the Axiom logo and product name on the left,
- * a copyright notice in the centre and navigation links/icons on the right.
- * The footer uses a dark background to blend seamlessly with the rest of
- * the site and horizontal layout that stacks on smaller screens. Icons are
- * implemented using inline SVGs to avoid external dependencies.
- */
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-black text-gray-400 px-4 py-8 border-t border-gray-800">
+    <footer className="fixed bottom-0 inset-x-0 bg-black text-gray-400 px-4 py-8 border-t border-gray-800 z-50">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Left: Brand */}
         <div className="flex items-center space-x-2 text-white">
@@ -20,15 +15,22 @@ export default function Footer() {
           <span className="w-4 h-4 border-b-8 border-l-8 border-b-transparent border-l-transparent border-t-8 border-r-8 border-t-white border-r-white inline-block" />
           <span className="font-semibold text-lg">AXIOM&nbsp;Pro</span>
         </div>
+
         {/* Centre: Copyright */}
         <div className="text-sm text-gray-500">
-          © {new Date().getFullYear()} Axiom. All rights reserved.
+          © {year} Axiom. All rights reserved.
         </div>
+
         {/* Right: Links and social icons */}
         <div className="flex items-center space-x-4 text-sm">
-          <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
-          <Link href="/docs" className="hover:text-white transition-colors">Docs</Link>
-          {/* X (formerly Twitter) icon */}
+          <Link href="/contact" className="hover:text-white transition-colors">
+            Contact
+          </Link>
+          <Link href="/docs" className="hover:text-white transition-colors">
+            Docs
+          </Link>
+
+          {/* X (Twitter) icon */}
           <a
             href="#"
             aria-label="Twitter"
@@ -43,6 +45,7 @@ export default function Footer() {
               <path d="M22.46 6c-.77.35-1.6.59-2.46.69a4.26 4.26 0 001.88-2.35 8.6 8.6 0 01-2.71 1.04 4.28 4.28 0 00-7.3 3.9A12.16 12.16 0 013 4.79a4.28 4.28 0 001.32 5.71 4.2 4.2 0 01-1.93-.53v.05a4.28 4.28 0 003.44 4.19 4.3 4.3 0 01-1.93.07 4.28 4.28 0 003.98 2.96A8.59 8.59 0 012 19.54a12.1 12.1 0 006.56 1.92c7.87 0 12.18-6.52 12.18-12.18 0-.19-.01-.38-.02-.57A8.7 8.7 0 0024 5.3a8.7 8.7 0 01-2.54.7z" />
             </svg>
           </a>
+
           {/* Discord icon */}
           <a
             href="#"
