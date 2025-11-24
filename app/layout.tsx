@@ -11,18 +11,14 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/6534601.jpg',
-        type: 'image/jpeg',
-        sizes: '32x32'
-      },
-      // optional fallback (recommended on Vercel)
-      {
         url: '/favicon.ico',
-        sizes: 'any'
+        sizes: 'any',
+        type: 'image/x-icon'
       }
     ],
   },
 };
+
 
 
 /**
